@@ -20,7 +20,7 @@ public class UserInformation {
 
     private static IUserService userService = new UserService();
 
-    private static List<User> users = userService.getUsers();
+
 
     private static void showActionForm() {
         System.out.println("\n ------------- Quản lí người dùng -------------");
@@ -39,6 +39,7 @@ public class UserInformation {
     public static void chooseActionInUsersInfo() {
         do {
             showActionForm();
+            List<User> users = userService.getUsers();
             try {
                 int number = Menu.chooseActionByNumber();
                 if (number == 1) {
@@ -149,7 +150,7 @@ public class UserInformation {
     }
 
     private static void showUsersList(List<User> users, int choice) {
-        System.out.println("\nUSERS LIST ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("\n ------------------------------------------------------------------------------------USERS LIST----------------------------------------------------------------------------------------------------");
         System.out.printf("%-12s %-28s %-20s %-20s %-25s %-25s %-22s %-10s %-10s\n", "ID", "Full Name", "Date of Birth", "Phone Number", "Email", "Address", "Username", "Role", "Creation Date");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         switch (choice) {

@@ -64,10 +64,10 @@ public class BeerService implements IBeerService {
     }
 
     @Override
-    public void remove(Beer beer) {
+    public void remove(long id) {
         List<Beer> beers = getBeers();
-        beers.remove(beer);
-        CSVUtils.writeData(path,beers);
+        beers.removeIf(b -> b.getId() == id);
+            CSVUtils.writeData(path, beers);
     }
 
     @Override

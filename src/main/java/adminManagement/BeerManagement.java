@@ -493,6 +493,7 @@ public class BeerManagement {
     }
 
     private static void removeBeer() {
+        IBeerService beerService = new BeerService();
         Beer beer = getExistedBeer();
         do {
             System.out.printf("\nXác nhận bạn muốn xóa mặt hàng %s '%s'.\n", beer.getId(), beer.getBeerName());
@@ -501,8 +502,8 @@ public class BeerManagement {
             try {
                 int number = Menu.chooseActionByNumber();
                 if (number == 1) {
+                    beerService.remove(beer.getId());
                     System.out.printf("\nMặt hàng '%s' đã xóa thành công!\n", beer.getId());
-                    beerService.remove(beer);
                     chooseActionInMedicineManagement();
                     break;
                 }
@@ -546,11 +547,11 @@ public class BeerManagement {
 
     public static void showAllBeers(List<Beer> beers) {
         System.out.println("\u001B[35m╔--------------------------------------------------------Danh sách bia -------------------------------------------------------------------╗\u001B[35m");
-        System.out.printf("|%-12s %-25s %-30s %-23s %-23s %-19s| \n",
-                 "ID", "Tên Bia", "Nồng độ cồn (%)", "Giá", "Số lượng (thùng)", "Ngày nhập kho");
+        System.out.printf("|%-12s %-25s %-30s %-23s %-23s  %-19s| \n",
+                 "ID", "Tên Bia", "Nồng độ cồn (%)", "Giá", "Số lượng (thùng)", "Ngày hết hạn");
         System.out.println("\u001B[35m|-----------------------------------------------------------------------------------------------------------------------------------------|\u001B[35m");
         for (Beer beer : beers) {
-            System.out.printf("|%-12s %-25s %-30s %-23s %-23s %-19s| \n", beer.getId(), beer.getBeerName(), beer.getAlcoholConcentration(),
+            System.out.printf("|%-12s %-25s %-30s %-23s %-23s  %-19s | \n", beer.getId(), beer.getBeerName(), beer.getAlcoholConcentration(),
                     ValidateUtils.covertPriceToString(beer.getPricePerPill()), beer.getQuantity(), beer.getExpirationDate());
         }
         System.out.println("\u001B[35m╚-----------------------------------------------------------------------------------------------------------------------------------------╝\u001B[35m");

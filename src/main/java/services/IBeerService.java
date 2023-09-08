@@ -14,7 +14,7 @@ public interface IBeerService {
 
     void update(Beer newBeer);
 
-    void remove(Beer beer);
+    void remove(long id);
 
     boolean isIdExisted(int id);
 

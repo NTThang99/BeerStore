@@ -35,7 +35,6 @@ public class AccountManagement {
         SignUpView newRegister = new SignUpView();
         boolean is;
         int number = -1;
-
         do {
             showCurrentAccount(currentUser);
             showChangeStatus(number);
@@ -45,8 +44,8 @@ public class AccountManagement {
             System.out.println("---> Nhập '4' để cập nhật Số điện thoại.");
             System.out.println("---> Nhập '5' để cập nhật Địa chỉ.");
             System.out.println("---> Nhập '6' để cập nhật Email.");
-            System.out.println("---> Nhập '7' để cập nhật Tên người dùng.");
-            System.out.println("---> Nhập '8' để cập nhật mật khẩu.");
+            System.out.println("---> Nhập '7' để cập nhật mật khẩu.");
+            System.out.println("---> Nhập '8' để xác nhận cập nhật.");
             System.out.println("---> Nhập '0' để kết thúc cập nhật.\n");
 
             try {
@@ -67,14 +66,14 @@ public class AccountManagement {
                     case 6:
                         is = newRegister.enterEmail(currentUser);
                         break;
+//                    case 7:
+//                        is = newRegister.enterUserName(currentUser);
+//                        break;
                     case 7:
-                        is = newRegister.enterUserName(currentUser);
-                        break;
-                    case 8:
                         is = true;
                         updatePassword(currentUser);
                         break;
-                    case 9:
+                    case 8:
                         is = true;
                         userService.update(currentUser);
                         break;
